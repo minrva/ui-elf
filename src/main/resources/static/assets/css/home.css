@@ -1,0 +1,26 @@
+.unit-title {
+    color: #fff;
+}
+
+.panel-text {
+    color: #333;
+    text-decoration: none;
+}
+
+.checkout-panel {
+    background-color: #e2e8bc;
+    text-align: center;
+}
+
+.checkout-icon {
+    color: #aabd3f;
+}
+
+.checkin-panel {
+    background-color: #f8c7a6;
+    text-align: center;
+}
+
+.checkin-icon {
+    color: #f05a25;
+}

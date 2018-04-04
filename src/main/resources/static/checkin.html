@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Equipment Loan Form | Checkin</title>
+    <link rel="icon" href="favicon.png?v=1" type="image/png" />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/uniform.min.css" />
+    <link rel="stylesheet" href="assets/css/select2.min.css" />
+    <link rel="stylesheet" href="assets/css/jquery-ui.min.css" />
+    <link rel="stylesheet" href="assets/css/datepicker.min.css" />
+    <link rel="stylesheet" href="assets/css/jquery.min.css" />
+    <link rel="stylesheet" href="assets/css/unicorn.min.css" class="skin-color" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/signature-pad.min.css" />
+	<link rel="stylesheet" href="assets/css/checkin.css" />
+    <script src="https://cdn.jsdelivr.net/jquery/1.8.3/jquery.js"></script>
+    <script src="assets/js/signature_pad.min.js"></script>
+    <script src="assets/js/jquery.blockUI.js"></script>
+    <script src="assets/js/equipmentloanform.min.js"></script>
+    <script src="assets/js/html2canvas.js"></script>
+    <script src="assets/js/jspdf.debug.js"></script>
+    <script src="assets/js/accordion.min.js"></script>
+    <script src="assets/js/settings.js"></script>
+    <script src="assets/js/checkin.js"></script>
+</head>
+
+<body>
+    <div id="content">
+        <div class="container-fluid">
+
+            <!-- HEADER -->
+            <div id="content-header">
+                <span class="fa-stack fa-3x">
+                    <i class="fa fa-circle fa-stack-2x checkin-icon"></i>
+                    <i class="fa fa-check-square-o fa-stack-1x fa-inverse"></i>
+                </span>
+                <div class="form-header">
+                    <h3>Equipment Loan Agreement</h3>
+                </div>
+            </div>
+
+            <!-- PATRON -->
+            <div class="row-fluid">
+                <div class="span12 well">
+                    <h3>
+                        <i class="fa fa-user"></i> Patron
+                    </h3>
+                    <form class="form-horizontal">
+                        <label id="patronbarcode">Enter Patron Barcode:</label>
+                        <input id="getName" type="text" required value="339583595735124" placeholder="339583595735124" disabled/>
+                        <i class="fa fa-barcode"></i>
+                    </form>
+                    <div id="patron-search-result" class="hide">
+                        <hr>
+                        <h5 id="fullName">Full Patron Name: N/A</h5>
+                        <h5 id="email">Patron Email: N/A</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EQUIPMENT -->
+            <div class="row-fluid">
+                <div class="span12 well">
+                    <h3>
+                        <i class="fa fa-camera-retro"></i> Equipment
+                    </h3>
+                    <div id="equipment-notice">
+                        <p>Please enter the patron's barcode.</p>
+                    </div>
+                    <div id="equipment-loans" class="hide">
+                        <h4>Outstanding Loans</h4>
+                        <hr>
+                        <div id="accordion2" class="accordion"></div>
+                    </div>
+                    <div id="item-info" class="hide">
+                        <h4 id="loan-id"></h4>
+                        <hr>
+                        <h5 id="Item2"></h5>
+                        <h5 id="Item_Barcode2"></h5>
+                        <h5 id="Total_pieces2"></h5>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Pieces</th>
+                                </tr>
+                            </thead>
+                            <tbody id="modifyTable">
+                            </tbody>
+                        </table>        
+                    </div>
+                </div>
+            </div>
+
+            <!-- EQUIPMENT RETURN AGREEMENT -->
+            <div class="row-fluid">
+                <div class="span12 well">
+                    <h3>
+                        <i class="fa fa-pencil-square-o"></i> Equipment Return Agreement
+                    </h3>
+                    <div id="block2">
+                        <p>Please complete the equipment loan form before signing.</p>
+                    </div>
+                    <div id="signature-panel" class="hide">
+                        <p>
+                            By signing below I acknowledge that I have read and accepted the terms of loan and statement of liability above. Borrower
+                            signature:
+                        </p>
+                        <div>
+                            <canvas id="signature-pad" width="500" height="100">
+                                <script>
+                                    var canvas = document.querySelector("canvas");
+                                    var signaturePad = new SignaturePad(canvas);
+                                </script>
+                            </canvas>
+                        </div>
+                        <h5>
+                            Date:
+                            <input type="text" id="sig-date" data-date-format="mm-dd-yyyy" value='today' class="datepicker" disabled/>
+                        </h5>
+                        <h5 id="staff">Staff Name: N/A</h5>
+                    </div>
+                    <input value="Checkin" type="submit" id="submit" class="pull-right btn btn-primary" disabled/>
+                </div>
+            </div>
+
+            <!-- FOOTER -->
+            <div id="footer" class="span12"></div>
+        </div>
+    </div>
+</body>
+
+</html>

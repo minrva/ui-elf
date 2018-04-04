@@ -1,0 +1,38 @@
+.highlight {
+    background-color: #ffea00;
+}
+div.checker input {
+    opacity: 100 !important;
+}
+#content-header {
+    margin-bottom: 20px;
+}
+#content {
+    background-color: #e2e8bc;
+}
+.checkout-icon {
+    color: #aabd3f;
+}
+#content-header {
+    position: relative;
+}
+.form-header {
+    display: inline-block;
+    position: absolute;
+    bottom: 0px;
+}
+#deletebutton {
+    display: inline;
+}
+.checkout-input {
+    display: inline;
+}
+.checkin-input {
+    display: inline;
+}
+#signature-pad {
+    border:1px solid #000000;
+}
+#submit {
+    display: inline;
+}

@@ -1,0 +1,41 @@
+.highlight {
+    background-color: #ffea00;
+}
+
+div.checker input {
+    opacity: 100 !important;
+}
+
+#content {
+    background-color: #f8c7a6;
+}
+
+.checkin-icon {
+    color: #f05a25;
+}
+
+#content-header {
+    position: relative;
+}
+
+.form-header {
+    display: inline-block;
+    position: absolute;
+    bottom: 0px;
+}
+
+#signature-pad {
+    border: 1px solid #000000;
+}
+
+#submit {
+    display: inline;
+}
+
+.acc-item-info {
+    margin-top: 10px;
+}
+
+.acc-item-info-btn {
+    margin-bottom: 10px;
+}

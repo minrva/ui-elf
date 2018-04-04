@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Equipment Loan Form | Checkout</title>
+	<link rel="icon" href="favicon.png?v=1" type="image/png" />
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="assets/css/uniform.min.css" />
+	<link rel="stylesheet" href="assets/css/select2.min.css" />
+	<link rel="stylesheet" href="assets/css/jquery-ui.min.css" />
+	<link rel="stylesheet" href="assets/css/datepicker.min.css" />
+	<link rel="stylesheet" href="assets/css/jquery.min.css" />
+	<link rel="stylesheet" href="assets/css/unicorn.min.css" class="skin-color" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/css/signature-pad.min.css" />
+	<link rel="stylesheet" href="assets/css/checkout.css" />
+	<script src="assets/js/jquery-1.8.3.js"></script>
+	<script src="assets/js/jquery.blockUI.js"></script>
+	<script src="assets/js/signature_pad.min.js"></script>
+	<script src="assets/js/html2canvas.js"></script>
+	<script src="assets/js/jspdf.debug.js"></script>
+	<script src="assets/js/settings.js"></script>
+	<script src="assets/js/checkout.js"></script>
+</head>
+
+<body>
+	<div id="content">
+		<div class="container-fluid">
+
+			<!-- HEADER -->
+			<div id="content-header">
+				<span class="fa-stack fa-3x">
+					<i class="fa fa-circle fa-stack-2x checkout-icon"></i>
+					<i class="fa fa-check-square-o fa-stack-1x fa-inverse"></i>
+				</span>
+				<div class="form-header">
+					<h3>Equipment Loan Agreement</h3>
+				</div>
+			</div>
+
+			<!-- PATRON -->
+			<div class="row-fluid">
+				<div class="span12 well">
+					<h3>
+						<i class="fa fa-user"></i> Patron
+					</h3>
+					<form class="form-horizontal">
+						<label id="patronbarcode">Enter Patron Barcode:</label>
+						<input id="getName" type="text" required value="339583595735124" placeholder="339583595735124" disabled/>
+						<i class="fa fa-barcode"></i>
+					</form>
+					<div id="patron-search-result" class="hide">
+						<hr>
+						<h5 id="fullName">Full Patron Name: N/A</h5>
+						<h5 id="email">Patron Email: N/A</h5>
+					</div>
+				</div>
+			</div>
+
+			<!-- EQUIPMENT -->
+			<div class="row-fluid">
+				<div class="span12 well">
+					<h3>
+						<i class="fa fa-camera-retro"></i> Equipment
+					</h3>
+					<div id="equipment-notice">
+						<p>Please enter the patron's barcode.</p>
+					</div>
+					<div id="equipment-search" class="hide">
+						<form class="form-horizontal">
+							<label id="technologybarcode">Enter Item Barcode:</label>
+							<input id="itemCode" type="text" placeholder="765475420716" value="765475420716" required disabled/>
+							<i class="fa fa-barcode"></i>
+						</form>
+					</div>
+					<div id="equipment-search-result" class="hide">
+						<hr>
+						<h5 id="Item2">Item: N/A</h5>
+						<h5 id="Item_Barcode2">Item Barcode: N/A</h5>
+					</div>
+					<div id="equipment-info" class="hide">
+						<hr>
+						<h5 id="Total_pieces2">Total Parts: N/A</h5>
+						<h5 id="alert"></h5>
+						<h5>Contents:</h5>
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th>Piece</th>
+								</tr>
+							</thead>
+							<tbody id="modifyTable">
+							</tbody>
+						</table>
+						<input type="button" id="deletebutton" class="pull-right btn btn-primary" value="Remove Piece" disabled/>
+					</div>
+				</div>
+			</div>
+
+			<!-- CHECKOUT / RETURN -->
+			<div class="row-fluid">
+				<div class="span12 well">
+					<h3>
+						<i class="fa fa-calendar-check-o"></i> Checkout / Return
+					</h3>
+					<div id="datetime-notice">
+						<p>Please enter the item's barcode.</p>
+					</div>
+					<div id="datetime-input" class="row-fluid hide">
+						<div class="span4">
+							<label for="checkoutdate">Checkout Date and Time:</label>
+							<div class="checkout-input">
+								<input type="text" data-date-format="mm-dd-yyyy" value='today' id="checkoutdate" class="datepicker" disabled />
+								<input type="time" value='03:14' id="checkouttime" disabled/>
+							</div>
+						</div>
+						<div class="span4">
+							<label for="returndate">Return Date and Time:</label>
+							<div class="checkin-input">
+								<input type="text" data-date-format="mm-dd-yyyy" value='sevenDay' id="returndate" class="datepicker" disabled />
+								<input type="time" value='21:00' id="returntime" disabled/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- TERMS OF LOAN AND STATEMENT OF LIABILITY -->
+			<div class="row-fluid">
+				<div class="span12 well">
+					<h3>
+						<i class="fa fa-pencil-square-o"></i> Terms of Loan and Statement of Liability
+					</h3>
+					<div id="signature-notice">
+						<p>Please complete the equipment loan form before signing.</p>						
+					</div>
+					<div id="signature-agreement" class="hide"></div>
+					<div id="signature-panel" class="hide">
+						<p>
+							By signing below I acknowledge that I have read and accepted the terms of loan and statement of liability above. Borrower
+							signature:
+						</p>
+						<div>
+							<canvas id="signature-pad" width="500" height="100">
+								<script>
+									var canvas = document.querySelector("canvas");
+									var signaturePad = new SignaturePad(canvas);
+								</script>
+							</canvas>
+						</div>
+						<h5>
+							Date:
+							<input type="text" id="sig-date" data-date-format="mm-dd-yyyy" value='today' class="datepicker" disabled/>
+						</h5>
+						<h5 id="staff">Staff Name: N/A</h5>
+					</div>
+					<input value="Checkout" type="submit" id="submit" class="pull-right btn btn-primary" disabled/>
+				</div>
+			</div>
+
+			<!-- FOOTER -->
+			<div id="footer" class="span12"> </div>
+		</div>
+	</div>
+</body>
+
+</html>
